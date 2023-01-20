@@ -101,8 +101,6 @@ const LEVELS = [
 
 scene("mapGame", (levelNumber)=>{
 	let playing = true;
-	
-	let door = false;
 	let ghostVSpeed = 20;
 	let ghostHSpeed = 20;
 
@@ -219,8 +217,8 @@ const youWinText = add([
 
   function gameOverWin(){
 	playing = true;
-	door = true;
 	youWinText.opacity = 1;
+	destroyAll("zero");
 	play("win");
 	currentLevel++
 	if (currentLevel == LEVELS.length){
@@ -318,10 +316,6 @@ if(playing){
 	}
   });
   
-
-   
-   
-
 camScale(1.2, 1.2);
 
 player.onUpdate(() => {
@@ -374,5 +368,5 @@ onClick(() => {
 	if(!playing) go ("mapGame", currentLevel);
 })
 
-})
+});
 go("mapGame", currentLevel)
